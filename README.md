@@ -1,4 +1,3 @@
-fillmboard
-==========
+# fillmboard
 
-My first app
+My first rails app!

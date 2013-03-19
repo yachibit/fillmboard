@@ -1,0 +1,3 @@
+$('<%= "#comment_form#{@comment.photo_id}" %>').html("<%= j render('comments/comment') %>");
+$('<%= "#comment_count#{@comment.photo_id}" %>').html('<%= @comments.count %> comments');
+$('<%= "#comment_body#{@comment.photo_id}" %>').html('<% @comments.each do |comment| %><%= image_tag comment.user.picture, :width => "35" %><%= comment.body %><br><% end %>');

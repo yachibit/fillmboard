@@ -1,4 +1,35 @@
 Fillmboard::Application.routes.draw do
+  
+  root :to => 'home#index'
+  resources :invites
+  resources :albums, :path_names => { :edit => 'config' }, except: [:index, :new] do
+    resources :photos, only: [:new, :create]
+  end
+  
+  resources :users, :path_names => { :edit => 'config' }, except: :index do
+    resources :photos, only: :index
+    resources :likes, only: :index
+    resources :groups, only: :index
+  end
+
+  resources :groups, :path_names => { :edit => 'config' }, except: :index do
+    resources :albums, only: [:index, :new]
+    resources :users, only: :index
+  end
+
+  resources :photos, :path_names => { :new => 'upload' }, except: [:index, :new, :create] do
+  end
+
+  resources :likes, only: [:create, :destroy]
+  resources :comments, only: [:new, :create, :destroy]
+
+  resources :user_relationships, only: :create
+
+  #OAuthコールバック
+  match 'auth/:provider/callback' => 'sessions#create'
+  match 'auth/failure' , to: redirect('/')
+  match 'signout' => 'sessions#destroy', :as => 'signout'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -48,7 +79,6 @@ Fillmboard::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
 
   # See how all your routes lay out with "rake routes"
 

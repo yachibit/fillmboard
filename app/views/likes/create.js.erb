@@ -1,0 +1,2 @@
+$('<%= "#like_button#{@like.photo_id}" %>').html("<%= j render 'like_button', :object => @photo %>");
+$('<%= "#like_count#{@like.photo_id}" %>').html('<%= @likes.count %> likes');

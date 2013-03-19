@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h2>
+  <%= @album.name %>
+</h2>
+<p>
+  <%= @album.description %>
+</p>
+
+<%= link_to 'Edit', edit_album_path(@album) %>
+
+<br>
+
+<%= link_to 'Upload', new_album_photo_path(@album) %>
+
+<br>
+
+<% @photos.each do |photo| %>
+  <%= render 'photos/photo', :photo => photo %>
+<% end %>
+
+<div id="photos">
+</div>
+
+<br>
+
+<p class="text-center">
+<%= link_to_next_page(@photos, 'more', remote: true, id: 'view_more') %>
+</p>

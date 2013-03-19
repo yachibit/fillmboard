@@ -1,0 +1,63 @@
+<p id="notice"><%= notice %></p>
+
+<h2><%= @group.name %></h2>
+
+<p><%= @group.description %></p>
+
+<a href="#invitation_modal" role="button" data-toggle="modal">
+  Invite Friends
+</a>
+ |
+<%= link_to 'Edit', edit_group_path(@group) %>
+
+<h3>Members</h3>
+<% @group.users.each do |user| %>
+  <%= image_tag user.picture, :width => '30'%>
+  <%= user.name %>
+  <%= link_to 'Show', user %>
+  <br>
+<% end %>
+
+<h3>Albums</h3>
+<%= link_to 'new album', new_group_album_path(@group) %>
+<br>
+<br>
+<div id="albums-list">
+  <ul>
+    <% @group.albums.each do |album| %>
+    <li>
+      <% if photo = album.photos.first %>
+        <%= link_to image_tag(photo.avatar.url, :width => '200'), album %>
+      <% else %>
+        <%= link_to image_tag('empty-album.png', :width => '200'), album %>
+      <% end %>
+      <br>
+      <%= link_to album.name, album %> |
+      <%= album.photos.size %>photos
+      <br>
+    </li>
+    <% end %>
+  </ul>
+</div>
+
+<!-- Modal START -->
+<div id="invitation_modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+  <div class="modal-body">
+    <h2>Invite Friends in Group</h2>
+    <%= text_field_tag :search, params[:search] %>
+    <br>
+    <% current_user.invitable_friends_to_group(@group).each do |friend| %>
+      <%= image_tag friend.picture, :width => '30'%>
+      <%= friend.name %>
+      <%= form_for friend.user_relationships.build(:group_id => @group.id) do |f| %>
+        <%= f.hidden_field :group_id %>
+        <%= f.hidden_field :user_id %>
+        <%= f.submit "Invite" %>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="modal-footer">
+  </div>
+</div>
+<!-- Modal END -->

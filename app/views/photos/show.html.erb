@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Body:</b>
+  <%= @photo.body %>
+</p>
+
+<p>
+  <b>Photo:</b>
+  <%#= changed y.yachi 2013/01/16 %>
+  <%#= @photo.photo %>
+  <%= image_tag @photo.avatar.url, :width => '100' %>
+  <%#= END changed y.yachi 2013/01/16 %>
+</p>
+
+
+<%= link_to 'Edit', edit_photo_path(@photo) %> |
+<%= link_to 'Back', photos_path %>

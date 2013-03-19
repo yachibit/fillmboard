@@ -1,0 +1,77 @@
+// Place all the styles related to the Groups controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.top-module {
+	height: 40px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #ddd;
+}
+
+#group-title {
+	height: 50px;
+	float: left;
+}
+
+#group-new-links {
+	height: 50px;
+	padding: 15px 0;
+	float: right;
+}
+
+#groups-list {
+	height: 170px;
+}
+
+#groups-list li {
+	display: inline-block;
+	background: #FEFEFE;
+	border: 2px solid #FAFAFA;
+	box-shadow: 0 1px 2px rgba(34, 25, 25, 0.4);
+	margin: 0 10px 15px;
+	-webkit-column-break-inside: avoid;
+	-moz-column-break-inside: avoid;
+	column-break-inside: avoid;
+	padding: 10px;
+	padding-bottom: 5px;
+	background: -webkit-linear-gradient(45deg, #FFF, #F9F9F9);
+	opacity: 1;
+	
+	-webkit-transition: all .2s ease;
+	-moz-transition: all .2s ease;
+	-o-transition: all .2s ease;
+	transition: all .2s ease;
+}
+
+#back-group {
+	height: 150px;
+	width: 100px;
+	top: 205px;
+	position: absolute;
+}
+
+#groups-elements {
+	left: 290px;
+	position: absolute;
+}
+
+#next-group {
+	height: 170px;
+	width: 100px;
+	top: 205px;
+	left: 1130px;
+	position: absolute;
+}
+
+#new-photos {
+	clear: both;
+}
+
+.new-photos-elements {
+	float: left;
+	margin: 0 15px 0;
+}
+
+#albums-list li {
+	display: inline-block;
+}

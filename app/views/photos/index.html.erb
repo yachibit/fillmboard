@@ -1,0 +1,16 @@
+<h1>Listing photos</h1>
+
+<%= link_to 'New Photo', new_photo_path %>
+
+<div id="photo">
+<% @photos.each do |photo| %>
+  <%= image_tag photo.avatar.url, :width => '500'%>
+  <%= link_to 'Destroy', photo, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
+</div>
+<div id="photos">
+</div>
+
+<br>
+
+<%= link_to_next_page(@photos, 'more', remote: true, id: 'view_more') %>
