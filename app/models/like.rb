@@ -1,5 +1,6 @@
 class Like < ActiveRecord::Base
+  attr_accessible :user_id, :photo_id
+
   belongs_to :photo
   belongs_to :user
-  attr_accessible :user_id, :photo_id
 end

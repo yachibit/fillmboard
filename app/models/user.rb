@@ -1,15 +1,11 @@
 class User < ActiveRecord::Base  
-  #attr_accessible :access_token, :name, :provider, :uid
+  attr_accessible :access_token, :name, :provider, :uid
+
   has_many :user_relationships
   has_many :groups, :through => :user_relationships
-  has_many :photos
-  has_many :likes
-  has_many :comments
-=begin
-  def self.from_omniauth(auth)
-    where(auth.slice("provider", "uid")).first || create_from_omniauth(auth)
-  end
-=end
+  has_many :photos, :dependent => :destroy
+  has_many :likes, :dependent => :destroy
+  has_many :comments, :dependent => :destroy
 
   def self.create_with_omniauth(auth)
     create! do |user|
