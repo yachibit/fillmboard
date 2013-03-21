@@ -1,24 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Name:</b>
+  <%= image_tag @user.picture, :width => '150px' %>
+</p>
+
+<h3>
   <%= @user.name %>
-</p>
-
-<p>
-  <b>Uid:</b>
-  <%= @user.uid %>
-</p>
-
-<p>
-  <b>Provider:</b>
-  <%= @user.provider %>
-</p>
-
-<p>
-  <b>Access token:</b>
-  <%= @user.access_token %>
-</p>
-
+</h3>
 
 <%= link_to 'Edit', edit_user_path(@user) %>
