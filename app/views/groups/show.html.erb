@@ -1,26 +1,36 @@
 <p id="notice"><%= notice %></p>
-
-<h2><%= @group.name %></h2>
-
-<p><%= @group.description %></p>
-
-<a href="#invitation_modal" role="button" data-toggle="modal">
-  Invite Friends
-</a>
- |
-<%= link_to 'Edit', edit_group_path(@group) %>
-
-<h3>Members</h3>
-<% @group.users.each do |user| %>
-  <%= image_tag user.picture, :width => '30'%>
-  <%= user.name %>
-  <%= link_to 'Show', user %>
-  <br>
-<% end %>
-
-<h3>Albums</h3>
-<%= link_to 'new album', new_group_album_path(@group) %>
+<div id ="group-information">
+  <div id="group-main-information">
+    <div id="group-name">
+      <h3><%= @group.name %></h3>
+    </div>
+    <div id="group-edit">
+      <%= link_to 'Edit', edit_group_path(@group), :class => 'btn' %>
+    </div>
+    <div id="group-description">
+      <%= @group.description %>
+    </div>
+  </div>
+  <div id="group-users">
+    <% @group.users.each do |user| %>
+      <%= link_to image_tag(user.picture, :width => '30'), user %>
+    <% end %>
+  </div>
+  <div id="invite-friends">
+    <a class="btn" href="#invitation_modal" role="button" data-toggle="modal" >
+      + Invite Friends
+    </a>
+  </div>
+</div>
 <br>
+<div class="top-module">
+  <div class="title">
+    <h3>Albums</h3>
+  </div>
+  <div class="link">
+    <%= link_to '+ New Album', new_group_album_path(@group), :class => 'btn', :id => 'new_btn' %>
+  </div>
+</div>
 <br>
 <div id="albums-list">
   <ul>
