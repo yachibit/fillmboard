@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130308125238) do
+ActiveRecord::Schema.define(:version => 20130324065009) do
 
   create_table "albums", :force => true do |t|
     t.string   "name"
@@ -74,7 +74,7 @@ ActiveRecord::Schema.define(:version => 20130308125238) do
 
   create_table "users", :force => true do |t|
     t.string   "name"
-    t.integer  "uid"
+    t.string   "uid"
     t.string   "provider"
     t.string   "access_token"
     t.datetime "created_at",   :null => false
