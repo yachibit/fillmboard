@@ -27,6 +27,13 @@
               <li><%= link_to "お知らせ" %></li>
               <li><%= link_to "個人設定" , edit_user_path(current_user.id) %></li>
             </ul>
+            <div id="user-links">
+              <% if current_user %>
+                <%= image_tag current_user.picture, :width => '30px' %>
+                <%= link_to current_user.name, current_user %>
+                <%= link_to "Sign out", signout_path %>
+              <% end %>
+            </div>
           <% end %>
           </div>
         </div>
@@ -35,10 +42,7 @@
 
     <div class="container">
       <div id="user_nav">
-        <% if current_user %>
-          Signed in as <%= current_user.name %>!
-          <%= link_to "Sign out", signout_path %>
-        <% else %>
+        <% unless current_user %>
           <%= link_to "Sign in with Facebook", "/auth/facebook" %>
         <% end %>
       </div>

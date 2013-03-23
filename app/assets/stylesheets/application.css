@@ -15,3 +15,8 @@
 body {
   background-image: url('noise-f1.gif');
 }
+
+#user-links {
+  float: right;
+  padding: 5px 0 5px;
+}
