@@ -12,14 +12,7 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :avatar %><br>
-    <%= f.file_field :avatar %>
-  </div>
-  <div class="field">
-    <%= f.label :body %><br>
-    <%= f.text_area :body %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+    <%= f.label :avatar, "Upload photo" %><br>
+    <%= f.file_field :avatar, multiple: true, name: "photo[avatar]" %>
   </div>
 <% end %>

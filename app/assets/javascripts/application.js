@@ -13,6 +13,7 @@
 //= require jquery
 //= require bootstrap
 //= require jquery_ujs
+//= require jquery-fileupload/basic
 //= require_tree .
 //= require bootstrap-scrollspy
 //= require bootstrap-modal

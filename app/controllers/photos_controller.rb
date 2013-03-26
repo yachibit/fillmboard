@@ -49,6 +49,7 @@ class PhotosController < ApplicationController
 
     respond_to do |format|
       if @photo.save
+        format.js
         format.html { redirect_to @album }
         format.json { render json: @photo, status: :created, location: @photo }
       else
