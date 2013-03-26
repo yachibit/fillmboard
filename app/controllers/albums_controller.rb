@@ -17,7 +17,7 @@ class AlbumsController < ApplicationController
   # GET /albums/1.json
   def show
     @album = Album.find(params[:id])
-    @photos = @album.photos.page(params[:page]).per(6)
+    @photos = @album.photos.order('created_at DESC').page(params[:page]).per(6)
     respond_to do |format|
       format.js
       format.html # show.html.erb
