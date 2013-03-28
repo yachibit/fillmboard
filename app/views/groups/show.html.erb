@@ -36,15 +36,18 @@
   <ul>
     <% @group.albums.each do |album| %>
     <li>
-      <% if photo = album.photos.first %>
-        <%= link_to image_tag(photo.avatar.url, :width => '200'), album %>
-      <% else %>
-        <%= link_to image_tag('empty-album.png', :width => '200'), album %>
-      <% end %>
-      <br>
-      <%= link_to album.name, album %> |
-      <%= album.photos.size %>photos
-      <br>
+      <div class="box effect">
+        <% if photo = album.photos.first %>
+          <%= link_to image_tag(photo.avatar.url, :width => '200'), album %>
+        <% else %>
+          <%= link_to image_tag('empty-album.png', :width => '200'), album %>
+        <% end %>
+      </div>
+      <div class="photo-text">
+        <strong><%= link_to album.name, album %></strong>
+        <br>
+        <%= album.photos.size %>photos
+      </div>
     </li>
     <% end %>
   </ul>
