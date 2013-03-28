@@ -19,6 +19,6 @@
   <%= render 'photos/photo', :photo => photo %>
 <% end %>
 
-<p class="text-center">
+<div id="photos"></div>
+
 <%= link_to_next_page(@photos, 'more', remote: true, id: 'view_more') %>
-</p>

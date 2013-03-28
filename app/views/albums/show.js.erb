@@ -1,2 +1,6 @@
 $("#photos").append("<%= j render(@photos) %>");
-$("#view_more").replaceWith("<%= j link_to_next_page(@photos, 'more', remote: true, id: 'view_more') %>");
+<% if @photos.current_page < @photos.total_pages %>
+	$("#view_more").replaceWith("<%= j link_to_next_page(@photos, 'more', remote: true, id: 'view_more') %>");
+<% else %>
+	$("#view_more").remove();
+<% end %>
