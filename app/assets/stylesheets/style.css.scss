@@ -1,3 +1,38 @@
 @import "bootstrap";
 
-body { padding-top: 60px; }
+body {
+  padding-top: 60px;
+}
+
+.navbar {
+  text-shadow: none;
+}
+
+.navbar-inner {
+  background-color: #2c2c2c;
+  background-image: none;
+  background-repeat: no-repeat;
+  filter: none;
+  height: 55px;
+}
+
+.navbar-inner > .container {
+  padding: 10px 0 10px;
+}
+
+.navbar .brand {
+  color: #FFFFFF;
+}
+
+.navbar .nav > li > a {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+#user-links {
+  float: right;
+  padding: 3px 0 0;
+}
+
+#user-links > a {
+  color: rgba(255, 255, 255, 0.85);
+}
