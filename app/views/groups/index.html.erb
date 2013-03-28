@@ -38,7 +38,9 @@
   <br>
   <% @photos.each do |photo| %>
     <div class="new-photos-elements">
-      <%= image_tag photo.avatar.url, :width => '200' %>
+      <div class="box effect">
+        <%= image_tag photo.avatar.url, :width => '200' %>
+      </div>
       <br>
       from <%= link_to photo.user.name, photo.user %>
       <br>
