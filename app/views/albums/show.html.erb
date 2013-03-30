@@ -1,17 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-<h2>
-  <%= @album.name %>
-</h2>
-<p>
-  <%= @album.description %>
-</p>
-
-<%= link_to 'Edit', edit_album_path(@album) %>
-
-<br>
-
-<%= link_to 'Upload', new_album_photo_path(@album) %>
+<div class="top-module">
+  <div class="title">
+    <h2><%= @album.name %></h2>
+  </div>
+  <div class="link btn-group">
+    <%= link_to 'Edit', edit_album_path(@album), :class => 'btn' %>
+    <%= link_to '+ Upload', new_album_photo_path(@album), :class => 'btn' %>
+  </div>
+</div>
 
 <br>
 
@@ -21,4 +18,6 @@
 
 <div id="photos"></div>
 
-<%= link_to_next_page(@photos, 'more', remote: true, id: 'view_more') %>
+<div id="more-btn">
+  <%= link_to_next_page(@photos, '↓ more', remote: true, id: 'view_more') %>
+</div>
