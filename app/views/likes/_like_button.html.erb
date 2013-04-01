@@ -1,17 +1,15 @@
-<% current_user = User.first %>
 <% if @photo %>
 <% photo = @photo %>
 <% end %>
 
-	<% if like = current_user.likes.find_by_photo_id(photo.id) %>
-		<%= form_for like, :html => { :method => :delete }, :remote => true do |f| %>
-			<%= f.submit "Unlike" %>
-		<% end %>
-	<% else %>
-	<%= form_for current_user.likes.build(:photo_id => photo.id), :remote => true do |f| %>
-		<%= f.hidden_field :photo_id %>
-		<%= f.hidden_field :user_id %>
-		<%= f.submit "Like" %>
-		<%#= link_to f.submit ><i class="icon-heart"></i></a%>
-	<% end %>
+<% if like = current_user.likes.find_by_photo_id(photo.id) %>
+  <%= form_for like, :html => { :method => :delete }, :remote => true do |f| %>
+    <%= f.submit "Unlike", :class => 'btn-link like-submit' %>
+  <% end %>
+<% else %>
+  <%= form_for current_user.likes.build(:photo_id => photo.id), :remote => true do |f| %>
+    <%= f.hidden_field :photo_id %>
+    <%= f.hidden_field :user_id %>
+    <%= f.submit "Like", :class => 'btn-link like-submit' %>
+  <% end %>
 <% end %>

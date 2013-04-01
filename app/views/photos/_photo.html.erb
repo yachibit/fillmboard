@@ -1,34 +1,18 @@
-<div class='photo'>
+<div class="box effect added-photo">
   <a href="<%= "#myModal#{photo.id}" %>" role="button" data-toggle="modal">
     <%= image_tag photo.avatar.url, :width => '250' %>
   </a>
-  <%#= link_to 'Destroy', photo, method: :delete, data: { confirm: 'Are you sure?' } %>
-
-  <div id="like">
-    <div id="<%= "like_button#{photo.id}" %>">
-      <%= render 'likes/like_button', :photo => photo %>
+  <div id="<%= "like_button#{photo.id}" %>" class="like-button">
+    <%= render 'likes/like_button', :photo => photo %>
+  </div>
+  <div class="photo-info">
+    <div id="<%= "like_count#{photo.id}" %>" class="like-count">
+      <i class="icon-heart"></i> <%= photo.likes.count %>
     </div>
-    <div id="<%= "like_count#{photo.id}" %>">
-      <%= photo.likes.count %> likes
+    <div id="<%= "comment_count#{photo.id}" %>" class="comment-count">
+      <i class="icon-comment"></i> <%= photo.comments.count %>
     </div>
   </div>
-  <div id="comment">
-    <div id="<%= "comment_count#{photo.id}" %>">
-      <%= photo.comments.count %> commments
-    </div>
-  </div>
-  <!--
-    <div id="<%= "comment_form#{photo.id}" %>">
-      <%= render 'comments/comment', :photo => photo %>
-    </div>
-    <div id="<%= "comment_count#{photo.id}" %>">
-      <%= photo.comments.count %> commments
-    </div>
-    <div id="<%= "comment_body#{photo.id}" %>">
-      <% photo.comments.each do |comment| %>
-        <%= comment.body %><br />
-      <% end %>
-  -->
 </div>
 
 <!-- Modal START -->
