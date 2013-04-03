@@ -1,4 +1,6 @@
 class GroupsController < ApplicationController
+  before_filter :require_group_member, :only => [:show, :edit, :update, :destroy]
+
   # GET /groups
   # GET /groups.json
   def index
@@ -79,4 +81,10 @@ class GroupsController < ApplicationController
     end
   end
 
+  private
+
+  def require_group_member
+    @group = Group.find(params[:id])
+    redirect_to root_url unless @group.users.find_by_id(current_user.id)
+  end
 end
