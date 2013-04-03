@@ -1,4 +1,6 @@
 class AlbumsController < ApplicationController
+  before_filter :require_album_member, :only => [:show, :edit, :update, :destroy]
+
   # GET /albums
   # GET /albums.json
   def index
@@ -85,5 +87,12 @@ class AlbumsController < ApplicationController
       format.html { redirect_to albums_url }
       format.json { head :no_content }
     end
+  end
+
+  private
+
+  def require_album_member
+    @album = Album.find(params[:id])
+    redirect_to root_url unless @album.group.users.find_by_id(current_user.id)
   end
 end
