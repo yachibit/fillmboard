@@ -1,12 +1,11 @@
 class AlbumsController < ApplicationController
+  before_filter :find_album, :only => [:show, :edit, :update, :destroy, :require_album_member]
   before_filter :require_album_member, :only => [:show, :edit, :update, :destroy]
 
   # GET /albums
   # GET /albums.json
   def index
-    #@albums = Album.find(params[:group_id])
     @albums = Album.where("group_id = ?", params[:group_id])
-    #@albums = Album.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -18,7 +17,6 @@ class AlbumsController < ApplicationController
   # GET /albums/1
   # GET /albums/1.json
   def show
-    @album = Album.find(params[:id])
     @photo = @album.photos.new
     @photos = @album.photos.order('created_at DESC').page(params[:page]).per(6)
     respond_to do |format|
@@ -40,11 +38,6 @@ class AlbumsController < ApplicationController
     end
   end
 
-  # GET /albums/1/edit
-  def edit
-    @album = Album.find(params[:id])
-  end
-
   # POST /albums
   # POST /albums.json
   def create
@@ -64,8 +57,6 @@ class AlbumsController < ApplicationController
   # PUT /albums/1
   # PUT /albums/1.json
   def update
-    @album = Album.find(params[:id])
-
     respond_to do |format|
       if @album.update_attributes(params[:album])
         format.html { redirect_to album_url(@album), notice: 'Album was successfully updated.' }
@@ -80,7 +71,6 @@ class AlbumsController < ApplicationController
   # DELETE /albums/1
   # DELETE /albums/1.json
   def destroy
-    @album = Album.find(params[:id])
     @album.destroy
 
     respond_to do |format|
@@ -91,8 +81,11 @@ class AlbumsController < ApplicationController
 
   private
 
-  def require_album_member
+  def find_album
     @album = Album.find(params[:id])
+  end
+
+  def require_album_member
     redirect_to root_url unless @album.group.users.find_by_id(current_user.id)
   end
 end
