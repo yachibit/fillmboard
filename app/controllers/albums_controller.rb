@@ -1,5 +1,5 @@
 class AlbumsController < ApplicationController
-  before_filter :find_album, :only => [:show, :edit, :update, :destroy, :require_album_member]
+  before_filter :set_album, :only => [:show, :edit, :update, :destroy]
   before_filter :require_album_member, :only => [:show, :edit, :update, :destroy]
 
   # GET /albums
@@ -36,6 +36,10 @@ class AlbumsController < ApplicationController
       format.html # new.html.erb
       format.json { render json: @album }
     end
+  end
+
+  # GET /albums/1/edit
+  def edit
   end
 
   # POST /albums
@@ -81,7 +85,7 @@ class AlbumsController < ApplicationController
 
   private
 
-  def find_album
+  def set_album
     @album = Album.find(params[:id])
   end
 

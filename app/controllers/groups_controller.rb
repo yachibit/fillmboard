@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  before_filter :find_group, :only => [:show, :edit, :update, :destroy, :require_group_member]
+  before_filter :set_group, :only => [:show, :edit, :update, :destroy]
   before_filter :require_group_member, :only => [:show, :edit, :update, :destroy]
 
   # GET /groups
@@ -32,6 +32,10 @@ class GroupsController < ApplicationController
       format.js
       format.json { render json: @group }
     end
+  end
+
+  # GET /groups/1/edit
+  def edit
   end
 
   # POST /groups
@@ -74,7 +78,7 @@ class GroupsController < ApplicationController
 
   private
 
-  def find_group
+  def set_group
     @group = Group.find(params[:id])
   end
 
