@@ -1,4 +1,5 @@
 class GroupsController < ApplicationController
+  before_filter :find_group, :only => [:show, :edit, :update, :destroy, :require_group_member]
   before_filter :require_group_member, :only => [:show, :edit, :update, :destroy]
 
   # GET /groups
@@ -15,8 +16,6 @@ class GroupsController < ApplicationController
   # GET /groups/1
   # GET /groups/1.json
   def show
-    @group = Group.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @group }
@@ -35,11 +34,6 @@ class GroupsController < ApplicationController
     end
   end
 
-  # GET /groups/1/edit
-  def edit
-    @group = Group.find(params[:id])
-  end
-
   # POST /groups
   # POST /groups.json
   def create
@@ -56,8 +50,6 @@ class GroupsController < ApplicationController
   # PUT /groups/1
   # PUT /groups/1.json
   def update
-    @group = Group.find(params[:id])
-
     respond_to do |format|
       if @group.update_attributes(params[:group])
         format.html { redirect_to @group, notice: 'Group was successfully updated.' }
@@ -72,7 +64,6 @@ class GroupsController < ApplicationController
   # DELETE /groups/1
   # DELETE /groups/1.json
   def destroy
-    @group = Group.find(params[:id])
     @group.destroy
 
     respond_to do |format|
@@ -83,8 +74,11 @@ class GroupsController < ApplicationController
 
   private
 
-  def require_group_member
+  def find_group
     @group = Group.find(params[:id])
+  end
+
+  def require_group_member
     redirect_to root_url unless @group.users.find_by_id(current_user.id)
   end
 end
