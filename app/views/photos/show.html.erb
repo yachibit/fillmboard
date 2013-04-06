@@ -1,18 +1,56 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Body:</b>
-  <%= @photo.body %>
-</p>
-
-<p>
-  <b>Photo:</b>
-  <%#= changed y.yachi 2013/01/16 %>
-  <%#= @photo.photo %>
-  <%= image_tag @photo.avatar.url, :width => '100' %>
-  <%#= END changed y.yachi 2013/01/16 %>
-</p>
-
-
-<%= link_to 'Edit', edit_photo_path(@photo) %> |
-<%= link_to 'Back', photos_path %>
+<div id="main-photo">
+  <%= image_tag @photo.avatar.url %>
+</div>
+<div id="photo-meta">
+  <div class="photo-user">
+  <%= link_to image_tag(@photo.user.picture, :width => '40'), @photo.user %>
+  <h3>by <%= link_to @photo.user.name, @photo.user %></h3>
+  </div>
+  <div id="<%= "like_button#{@photo.id}" %>" class="like-button">
+    <%= render 'likes/like_button', :photo => @photo %>
+  </div>
+</div>
+<br>
+<div id="photos-album">
+  <div class="top-module">
+    <h3><%= @photo.album.name %>'s photos</h3>
+  </div>
+  <% @photos.each do |photo| %>
+    <%= link_to image_tag(photo.avatar.url(:thumb), :width => '50'), photo %>
+  <% end %>
+</div>
+<div id="photos-reputation">
+  <div id="photos-comment">
+    <div class="top-module">
+      <h3><%= @photo.comments.count %> comments</h3>
+    </div>
+      <div id="<%= "comment_form#{@photo.id}" %>">
+      <%= render 'comments/comment', :photo => @photo %>
+    </div>
+    <br>
+    <% @photo.comments.each do |comment| %>
+      <div id="show-comments">
+        <div id="commenter-image">
+          <%= link_to image_tag(comment.user.picture, :width => '40'), comment.user %>
+        </div>
+        <div id="commenter-meta">
+          <%= link_to comment.user.name, comment.user %>
+          <br>
+          <%= comment.body %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div id="photos-like">
+    <div class="top-module">
+      <h3><%= @photo.likes.count %> likes</h3>
+    </div>
+    <div id="like-user">
+      <% @photo.likes.each do |like| %>
+        <%= image_tag like.user.picture, :width => '40' %>
+      <% end %>
+    </div>
+  </div>
+</div>

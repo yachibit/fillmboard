@@ -28,3 +28,84 @@
 form {
   display: inline;
 }
+
+#main-photo {
+  text-align: center;
+}
+
+#photo-meta {
+  margin: 5px 10px 40px;
+
+  h3 {
+    display: inline;
+  }
+
+  .like-submit {
+    float: right;
+    font-size: 26px;
+    font-weight: bold;
+  }
+}
+
+.photo-user {
+  float: left;
+  width: 70%;
+}
+
+#photos-album {
+  clear: both;
+  margin: 0 0 30px;
+}
+
+#photos-reputation {
+  margin: 0 0 50px;
+}
+
+#photos-comment {
+  width: 510px;
+  float:left;
+  form div {
+    margin: 5px 0 0;
+  }
+
+  #comment_body {
+    width: 500px;
+    margin-bottom: 5px;
+  }
+
+  textatea {
+    width: 500px;
+  }
+
+  input {
+    float: right;
+  }
+
+  #show-comments {
+    height: 50px;
+    margin: 5px 0 5px;
+  }
+}
+
+#photos-like {
+  width: 35%;
+  float: right;
+}
+
+#commenter-image {
+  width: 40px;
+  float:left;
+}
+
+#commenter-meta {
+  margin: 0 0 0 10px;
+  float:left;
+
+  a {
+    font-weight: bold;
+  }
+}
+
+#like-user {
+  margin-top: 5px;
+}

@@ -4,11 +4,10 @@
 <% end %>
 
 <%= form_for current_user.comments.build(:photo_id => photo.id), :remote => true do |f| %>
-		<%= f.hidden_field :photo_id %>
-		<%= f.hidden_field :user_id %>
-		<div class="field">
-      <%#= f.label :body %><%#br /%>
+    <%= f.hidden_field :photo_id %>
+    <%= f.hidden_field :user_id %>
+    <div class="field">
       <%= f.text_area :body, :size => "20×10" %>
     </div>
-		<%= f.submit "Comment" %>
+    <%= f.submit "Comment" %>
 <% end %>

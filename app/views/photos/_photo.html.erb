@@ -1,7 +1,5 @@
 <div class="box effect added-photo">
-  <a href="<%= "#myModal#{photo.id}" %>" role="button" data-toggle="modal">
-    <%= image_tag photo.avatar.url, :width => '250' %>
-  </a>
+  <%= link_to image_tag(photo.avatar.url, :width => '250'), photo %>
   <div id="<%= "like_button#{photo.id}" %>" class="like-button">
     <%= render 'likes/like_button', :photo => photo %>
   </div>
@@ -14,29 +12,3 @@
     </div>
   </div>
 </div>
-
-<!-- Modal START -->
-<div id="<%= "myModal#{photo.id}" %>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <!--<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>-->
-  <div class="modal-body">
-    <p>
-      <%= image_tag photo.avatar.url, :width => '1200' %>
-    </p>
-    <div id="<%= "comment_body#{photo.id}" %>">
-      <% photo.comments.each do |comment| %>
-        <%= image_tag comment.user.picture, :width => '35' %>
-        <%= comment.body %><br />
-      <% end %>
-    </div>
-    <div id="<%= "comment_form#{photo.id}" %>">
-      <%= render 'comments/comment', :photo => photo %>
-    </div>
-  </div>
-  <div class="modal-footer">
-    <button class="btn">Like</button>
-    <button class="btn">Comment</button>
-    <br>
-    
-  </div>
-</div>
-<!-- Modal END -->
