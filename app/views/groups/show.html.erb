@@ -33,14 +33,13 @@
 </div>
 <br>
 <div id="albums-list">
-  <ul>
-    <% @group.albums.each do |album| %>
-    <li>
+  <% @group.albums.each do |album| %>
+    <div class="albums-elements">
       <div class="box effect">
         <% if photo = album.photos.first %>
-          <%= link_to image_tag(photo.avatar.url, :width => '200'), album %>
+          <%= link_to image_tag(photo.avatar.url(:medium), :width => '215'), album %>
         <% else %>
-          <%= link_to image_tag('empty-album.png', :width => '200'), album %>
+          <%= link_to image_tag('empty-album.png', :width => '215'), album %>
         <% end %>
       </div>
       <div class="photo-text">
@@ -48,9 +47,8 @@
         <br>
         <%= album.photos.size %>photos
       </div>
-    </li>
-    <% end %>
-  </ul>
+    </div>
+  <% end %>
 </div>
 
 <!-- Modal START -->
