@@ -24,24 +24,26 @@
 <div id="photos-reputation">
   <div id="photos-comment">
     <div class="top-module">
-      <h3><%= @photo.comments.count %> comments</h3>
+      <h3><span id="comment-count"><%= @photo.comments.count %></span> comments</h3>
     </div>
-      <div id="<%= "comment_form#{@photo.id}" %>">
+      <div id="comment-form">
       <%= render 'comments/comment', :photo => @photo %>
     </div>
     <br>
-    <% @photo.comments.each do |comment| %>
-      <div id="show-comments">
-        <div id="commenter-image">
-          <%= link_to image_tag(comment.user.picture, :width => '40'), comment.user %>
+    <div id="show-comments">
+      <% @photo.comments.each do |comment| %>
+        <div class="show-comments">
+          <div class="commenter-image">
+            <%= link_to image_tag(comment.user.picture, :width => '40'), comment.user %>
+          </div>
+          <div class="commenter-meta">
+            <%= link_to comment.user.name, comment.user %>
+            <br>
+            <%= comment.body %>
+          </div>
         </div>
-        <div id="commenter-meta">
-          <%= link_to comment.user.name, comment.user %>
-          <br>
-          <%= comment.body %>
-        </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
   <div id="photos-like">
     <div class="top-module">
