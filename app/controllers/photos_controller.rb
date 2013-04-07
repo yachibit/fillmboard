@@ -16,6 +16,7 @@ class PhotosController < ApplicationController
   def show
     @photo = Photo.find(params[:id])
     @photos = @photo.album.photos.all
+    @likes = @photo.likes.order('created_at DESC').all
 
     respond_to do |format|
       format.js

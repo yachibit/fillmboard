@@ -42,7 +42,7 @@ class LikesController < ApplicationController
   def create
     @like = Like.new(params[:like])
     @photo = @like.photo
-    @likes = Like.where("photo_id = ?", @like.photo_id)
+    @likes = Like.order('created_at DESC').where("photo_id = ?", @like.photo_id)
     @like.save
     
     respond_to do |format|
