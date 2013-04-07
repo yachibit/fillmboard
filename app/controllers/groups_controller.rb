@@ -16,6 +16,7 @@ class GroupsController < ApplicationController
   # GET /groups/1
   # GET /groups/1.json
   def show
+    @albums = @group.albums.order('created_at DESC').all
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @group }
