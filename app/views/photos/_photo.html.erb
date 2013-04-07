@@ -1,5 +1,5 @@
 <div class="box effect added-photo">
-  <%= link_to image_tag(photo.avatar.url, :width => '250'), photo %>
+  <%= link_to image_tag(photo.avatar.url(:medium), :width => '215'), photo %>
   <div id="<%= "like_button#{photo.id}" %>" class="like-button">
     <%= render 'likes/like_button', :photo => photo %>
   </div>
