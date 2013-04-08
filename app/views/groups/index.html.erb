@@ -39,7 +39,7 @@
   <% @photos.each do |photo| %>
     <div class="new-photos-elements">
       <div class="box effect">
-        <%= image_tag photo.avatar.url(:medium), :width => '215' %>
+        <%= link_to image_tag(photo.avatar.url(:medium), :width => '215'), photo %>
       </div>
       <div class="photo-text">
         from <%= link_to photo.user.name, photo.user %>
