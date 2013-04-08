@@ -1,3 +1,48 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.home-body {
+  background-image: url('8275344932_d8b1df8be0_o.jpg');
+  background-size:cover;
+}
+
+#home-info {
+  width: 800px;
+  position: absolute;
+  left: auto;
+  right: 0px;
+  top: 20%;
+  font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+  font-weight: 100;
+  letter-spacing: 1px;
+  color: white;
+}
+
+#home-title {
+  font-size: 32px;
+  padding-top: 20px;
+  padding-left: 20px;
+  height: 40px;
+  border-radius: 2px;
+  background-color: rgba(0,0,0,0.6);
+}
+
+#home-subtitle {
+  margin-top: 10px;
+  font-size: 20px;
+  padding: 11px 0px 10px 20px;
+  border-radius: 2px;
+  background-color: rgba(0,0,0,0.6);
+}
+
+#sign-in-link {
+  width: auto;
+  height: 50px;
+  margin-top: 20px;
+
+  img {
+    margin-left: -3px;
+  }
+}

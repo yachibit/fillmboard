@@ -10,7 +10,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%= csrf_meta_tags %>
   </head>
-  <body>
+  <% if current_user %>
+    <body>
+  <% else %>
+    <body class="home-body">
+  <% end %>
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
@@ -41,11 +45,6 @@
     </div>
 
     <div class="container">
-      <div id="user_nav">
-        <% unless current_user %>
-          <%= link_to "Sign in with Facebook", "/auth/facebook" %>
-        <% end %>
-      </div>
       <% flash.each do |name, msg| %>
         <%= content_tag :div, msg, id: "flash_#{name}" %>
       <% end %>
