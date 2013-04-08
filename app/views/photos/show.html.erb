@@ -15,7 +15,7 @@
 <br>
 <div id="photos-album">
   <div class="top-module">
-    <h3><%= @photo.album.name %>'s photos</h3>
+    <h3><%= link_to @photo.album.name, @photo.album %>'s photos</h3>
   </div>
   <% @photos.each do |photo| %>
     <%= link_to image_tag(photo.avatar.url(:thumb), :width => '50'), photo %>
