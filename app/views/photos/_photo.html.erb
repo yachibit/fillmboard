@@ -1,11 +1,11 @@
 <div class="box effect added-photo">
   <%= link_to image_tag(photo.avatar.url(:medium), :width => '215'), photo %>
   <div id="<%= "like_button#{photo.id}" %>" class="like-button">
-    <%= render 'likes/like_button', :photo => photo %>
+    <%= render 'likes/like_button', :photo_id => photo.id %>
   </div>
   <div class="photo-info">
-    <div id="<%= "like_count#{photo.id}" %>" class="like-count">
-      <i class="icon-heart"></i> <%= photo.likes.count %>
+    <div class="like-count">
+      <i class="icon-heart"></i> <span id="<%= "like_count#{photo.id}" %>"><%= photo.likes.count %></span>
     </div>
     <div id="<%= "comment_count#{photo.id}" %>" class="comment-count">
       <i class="icon-comment"></i> <%= photo.comments.count %>

@@ -2,12 +2,12 @@
 <% photo = @photo %>
 <% end %>
 
-<% if like = current_user.likes.find_by_photo_id(photo.id) %>
+<% if like = current_user.likes.find_by_photo_id(photo_id) %>
   <%= form_for like, :html => { :method => :delete }, :remote => true do |f| %>
     <%= f.submit "Unlike", :class => 'btn-link like-submit' %>
   <% end %>
 <% else %>
-  <%= form_for current_user.likes.build(:photo_id => photo.id), :remote => true do |f| %>
+  <%= form_for current_user.likes.build(:photo_id => photo_id), :remote => true do |f| %>
     <%= f.hidden_field :photo_id %>
     <%= f.hidden_field :user_id %>
     <%= f.submit "Like", :class => 'btn-link like-submit' %>

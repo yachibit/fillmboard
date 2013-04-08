@@ -8,8 +8,8 @@
   <%= link_to image_tag(@photo.user.picture, :width => '40'), @photo.user %>
   <h3>by <%= link_to @photo.user.name, @photo.user %></h3>
   </div>
-  <div id="like-button" class="like-button">
-    <%= render 'likes/like_button', :photo => @photo %>
+  <div id="<%= "like_button#{@photo.id}" %>" class="like-button">
+    <%= render 'likes/like_button', :photo_id => @photo.id %>
   </div>
 </div>
 <br>
@@ -47,7 +47,7 @@
   </div>
   <div id="photos-like">
     <div class="top-module">
-      <h3><span id="like-count"><%= @photo.likes.count %></span> likes</h3>
+      <h3><span id="<%= "like_count#{@photo.id}" %>"><%= @photo.likes.count %></span> likes</h3>
     </div>
     <div id="like-user">
       <% @likes.each do |like| %>
