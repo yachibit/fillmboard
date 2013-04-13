@@ -14,6 +14,7 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
+    @photos = @user.photos.joins(:album => {:group => :users} ).where(:users => {:id => current_user.id }).order('created_at DESC').page(params[:page]).per(12)
 
     respond_to do |format|
       format.html # show.html.erb

@@ -1,11 +1,31 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <%= image_tag @user.picture, :width => '150px' %>
-</p>
+<div id="profile">
+  <%= image_tag @user.picture, :width => '100px' %>
+  <h3>
+    <%= @user.name %>
+  </h3>
+</div>
 
-<h3>
-  <%= @user.name %>
-</h3>
-
-<%= link_to 'Edit', edit_user_path(@user) %>
+<div id="user-uploads">
+  <div class="top-module">
+    <h3><%= @user.name %>'s Uploads</h3>
+  </div>
+  <br>
+  <% @photos.each do |photo| %>
+    <div class="new-photos-elements">
+      <div class="box effect">
+        <%= link_to image_tag(photo.avatar.url(:medium), :width => '215'), photo %>
+      </div>
+      <div class="photo-text">
+        in <%= link_to photo.album.name, photo.album %>
+        <br>
+        <br>
+      </div>
+    </div>
+  <% end %>
+  <div class="pagination">
+    <%= link_to_previous_page @photos, '← Newer', :class => 'btn' %>
+    <%= link_to_next_page @photos, 'Older →', :class => 'btn' %>
+  </div>
+</div>
