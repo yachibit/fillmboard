@@ -46,6 +46,9 @@
                       <%= link_to "個人設定" , edit_user_path(current_user.id) %>
                     </li>
                     <li>
+                      <%= link_to "fillmboardに友達を招待する", "#", :id => "invite_fb_friends" %>
+                    </li>
+                    <li>
                       <%= link_to "Sign out", signout_path %>
                     </li>
                   </ul>
@@ -66,5 +69,22 @@
         <div class="span12"><%= yield %></div>
       </div>
     </div>
+
+    <script src="http://connect.facebook.net/en_US/all.js"></script>
+
+    <script>
+      $(function(){
+
+        $("a#invite_fb_friends").click(function() {
+          FB.init({
+            appId: "<%= ENV['FACEBOOK_KEY'] %>",
+            cookie:false,
+            status:true
+          });
+
+          FB.ui({ method: 'apprequests', message: 'thank you are really Awesome.'});
+        });
+      });
+    </script>
   </body>
 </html>

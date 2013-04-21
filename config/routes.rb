@@ -1,7 +1,6 @@
 Fillmboard::Application.routes.draw do
   
   root :to => 'home#index'
-  resources :invites
   resources :albums, :path_names => { :edit => 'config' }, except: [:index, :new] do
     resources :photos, only: [:new, :create]
   end
