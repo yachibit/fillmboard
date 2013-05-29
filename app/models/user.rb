@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
 
     friends = graph.get_connection("me", "friends")
     friends.each do |friend|
-      fb_friends_array << friend["id"].to_i
+      fb_friends_array << friend["id"]
     end
 
     group.users.each do |user|
